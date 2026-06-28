@@ -81,7 +81,7 @@ check both whenever you update something.
 
 ## Security hardening
 
-I went through this with a red-team mindset and hardened a few things that are easy to
+I went through this with a real hacker mindset and hardened a few things that are easy to
 get wrong:
 
 - **Debugger is off unless you explicitly turn it on.** The Werkzeug debugger only
