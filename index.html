@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self'; connect-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'none'" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+<title>0xlol // operator console</title>
+<meta name="description" content="Tamer Saeed — Penetration Tester. Interactive security operator console." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="static/style.css" />
+</head>
+<body class="crt">
+  <div class="grid-bg"></div>
+  <div class="shell">
+    <aside>
+      <div class="badge">
+        <div class="sigil">0x</div>
+        <div>
+          <h1>TAMER SAEED</h1>
+          <div class="role">Penetration Tester</div>
+        </div>
+      </div>
+
+      <div class="meta">
+        <div class="row"><span class="k">Handle</span><span class="v">0xlol</span></div>
+        <div class="row"><span class="k">Host</span><span class="v">blackbox</span></div>
+        <div class="row"><span class="k">Geo</span><span class="v">Egypt</span></div>
+        <div class="row"><span class="k">Channel</span><span class="v"><span class="dot"></span>TLS 1.3</span></div>
+        <div class="row"><span class="k">Uptime</span><span class="v" id="uptime">00:00:00</span></div>
+      </div>
+
+      <div class="navlabel">// command index</div>
+      <nav id="nav"></nav>
+
+      <div class="links">
+        <a href="mailto:tamersaied96@gmail.com">mail</a>
+        <a href="https://linkedin.com/in/0xlol/" target="_blank" rel="noopener noreferrer">linkedin</a>
+        <a href="https://tryhackme.com/0xlol/" target="_blank" rel="noopener noreferrer">tryhackme</a>
+      </div>
+    </aside>
+
+    <main>
+      <div class="topbar">
+        <div class="traffic"><i class="r"></i><i class="y"></i><i class="g"></i></div>
+        <div class="tt">secure-shell — <b>0xlol@blackbox</b>: ~</div>
+        <div class="clock" id="clock">--:--:--</div>
+      </div>
+      <div class="screen" id="screen" aria-live="polite"></div>
+      <div class="prompt">
+        <span class="ps1"><span class="u">0xlol@blackbox</span>:~$</span>
+        <input id="cmd" autocomplete="off" autocapitalize="off" spellcheck="false"
+               aria-label="terminal command input" placeholder="type 'help' or click a command —" />
+        <span class="caret" id="caret"></span>
+      </div>
+    </main>
+  </div>
+
+<script src="static/app.js"></script>
+</body>
+</html>
