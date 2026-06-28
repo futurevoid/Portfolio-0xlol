@@ -7,7 +7,7 @@ back to you like terminal output: `whoami`, `findings`, `projects`, `skills`, an
 Under the hood it's a Flask app that serves the console and also exposes the whole profile
 as a small JSON API. The front end, though, is a single self-contained `index.html`, so
 if you don't want to run a backend at all, you don't have to. It works as a plain static
-page too (which is how I deploy it alongside my SOClify site).
+page too.
 
 ## Running it locally (Python / Flask)
 
@@ -69,9 +69,6 @@ The profile content lives in two places, and they need to stay in sync manually:
 - front end: the `CV = { … }` object near the top of `static/app.js`
 - backend: the `PROFILE = { … }` dict in `app.py`
 
-Forget one and the static version and the live API will quietly drift apart, so double
-check both whenever you update something.
-
 ## A few other notes
 
 - It's responsive down to mobile, respects `prefers-reduced-motion`, and is keyboard
@@ -81,8 +78,7 @@ check both whenever you update something.
 
 ## Security hardening
 
-I went through this with a real hacker mindset and hardened a few things that are easy to
-get wrong:
+I went through this with a real hacker mindset and hardened a few things:
 
 - **Debugger is off unless you explicitly turn it on.** The Werkzeug debugger only
   activates with `FLASK_DEBUG=1`. Production should run on `gunicorn`, never the Flask
@@ -103,7 +99,3 @@ get wrong:
   over.
 - **No input reflection**: the 404 page just returns a generic body, nothing echoed back.
 - **Dependencies are pinned** to exact versions in `requirements.txt`.
-
-For static hosting, there's a `vercel.json` included that pushes the full header set
-(CSP, nosniff, frame-options, HSTS, etc.) at the edge. The `<meta>` CSP inside `index.html`
-covers everything else: other static hosts, or even opening the file directly via `file://`.
