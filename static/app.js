@@ -5,9 +5,9 @@ const CV = {
   name:"Tamer Saeed", role:"Penetration Tester", handle:"0xlol",
   contact:{
     email:"tamersaied96@gmail.com", phone:"+20 1015548577", location:"Egypt",
-    linkedin:"https://linkedin.com/in/0xlol/", tryhackme:"https://tryhackme.com/0xlol/"
+    linkedin:"https://linkedin.com/in/0xlol/", tryhackme:"https://tryhackme.com/p/0XLOL"
   },
-  summary:"Motivated and analytical Penetration Tester with hands-on experience in web, API, and network security. Skilled in performing end-to-end penetration tests, simulating real-world attack scenarios, and delivering actionable remediation aligned with OWASP Top 10. Proficient with Burp Suite, Nmap, Metasploit, SQLMap and scripting (Python, Bash); eager to apply offensive testing skills to banking and financial sector engagements.",
+  summary:"Penetration Tester specialising in web application, API, and network security, with disclosed findings on production systems via HackerOne and a black-box assessment delivering 10 vulnerabilities across Critical to Medium severity (highest CVSS 9.4). Executes end-to-end engagements — reconnaissance, exploitation, privilege escalation, and CVSS-scored reporting — aligned with OWASP Top 10 and MITRE ATT&CK; proficient with Burp Suite, Nmap, Metasploit, SQLMap, Hydra, Gobuster, and Python/Bash scripting. Also designs and operates SOC infrastructure (ELK Stack, Shuffle SOAR, TheHive, Elastic Defend EDR) for threat detection, incident response, and adversary emulation.",
   education:{
     degree:"Bachelor in Applied Artificial Intelligence",
     org:"Damietta University, New Damietta, Egypt", when:"10/2022 – Present",
@@ -19,6 +19,13 @@ const CV = {
       "Performed reconnaissance, endpoint discovery, and vulnerability analysis to surface exploitable security weaknesses and verify exploitability.",
       "Developed proof-of-concept exploits and submitted structured reports through responsible disclosure workflows, facilitating timely vendor remediation.",
       "Used Burp Suite and manual HTTP request manipulation to validate and exploit complex web and API vulnerabilities."
+    ]},
+    {title:"Vulnerability Assessment — Student Portal & Subdomains", org:"Independent Security Research (Black-Box)", when:"May 2026", bullets:[
+      "Conducted a black-box vulnerability assessment against a university student portal and associated subdomains, identifying 10 vulnerabilities spanning Critical to Medium severity.",
+      "Discovered and documented a critical session management flaw (CVSS 9.4) enabling full account takeover through server-side session non-invalidation post-logout.",
+      "Identified Stored XSS (CVSS 8.3), IDOR enabling unauthenticated mass profile image enumeration (CVSS 7.5), absent server-side input validation (CVSS 7.1), and unauthenticated API surface exposure (CVSS 7.5).",
+      "Documented five medium-severity information disclosure findings: Django DEBUG mode in production, framework version leakage, backend module exposure via unminified JS, national identity parsing in client-side code.",
+      "Produced a structured assessment report: executive summary, scope, CVSS-scored findings with PoC exploits, risk heat map, and prioritised remediation roadmap."
     ]},
     {title:"Associate Penetration Tester (Training & Labs)", org:"Hackviser", when:"08/2025 – 10/2025", bullets:[
       "Completed end-to-end penetration testing across network, web, and hybrid environments, identifying vulnerabilities and documenting remediation recommendations.",
@@ -36,12 +43,22 @@ const CV = {
   findings:[
     {sev:"crit", name:"Account Takeover (ATO)", target:"trendyol.com · HackerOne",
      desc:"Identified JWT session cookie replay vulnerability enabling full account takeover through reuse of valid session tokens, resulting in unauthorized access to user accounts."},
+    {sev:"crit", name:"Session Non-Invalidation — Account Takeover", target:"Student Portal · Independent VA", cvss:"9.4",
+     desc:"Server-side sessions were not invalidated on logout, enabling full account takeover by replaying a post-logout session token."},
     {sev:"high", name:"Insecure Direct Object Reference (IDOR)", target:"demeter-api.trendyol.com · HackerOne",
-     desc:"Discovered IDOR via manipulated user_id parameter, enabling unauthorized access and modification of user account data through direct API requests."}
+     desc:"Discovered IDOR via manipulated user_id parameter, enabling unauthorized access and modification of user account data through direct API requests."},
+    {sev:"high", name:"Stored Cross-Site Scripting (XSS)", target:"Student Portal · Independent VA", cvss:"8.3",
+     desc:"Persisted cross-site scripting allowing attacker-controlled script execution within other users' authenticated sessions."},
+    {sev:"high", name:"IDOR — Unauthenticated Profile Image Enumeration", target:"Student Portal · Independent VA", cvss:"7.5",
+     desc:"Direct object reference permitted unauthenticated mass enumeration of user profile images across the platform."},
+    {sev:"high", name:"Unauthenticated API Surface Exposure", target:"Student Portal · Independent VA", cvss:"7.5",
+     desc:"Sensitive API endpoints were reachable without authentication, exposing functionality and data to unauthenticated callers."},
+    {sev:"high", name:"Absent Server-Side Input Validation", target:"Student Portal · Independent VA", cvss:"7.1",
+     desc:"Server-side input validation was absent, leaving endpoints exposed to malformed and malicious input."}
   ],
   skills:{
     Core:["Penetration Testing","Web Application Security","API Security","Network Security","Vulnerability Analysis","Exploitation","Privilege Escalation","SIEM","SOC Operations","Incident Response","Security Automation (SOAR)","Threat Intelligence","EDR","Detection Engineering","Adversary Emulation","OSINT","Enumeration","Python","Bash / Shell Scripting"],
-    Tools:["Burp Suite","Metasploit","Nmap","SQLMap","Hydra","Gobuster","Wireshark","Mythic C2","ELK Stack","TheHive","Shuffle SOAR","Elastic Defend","Fleet Server","T-Pot Honeypots","Docker","Linux"],
+    Tools:["Burp Suite","Metasploit","Nmap","SQLMap","Hydra","Gobuster","Wireshark","Mythic C2","ELK Stack (Elasticsearch, Logstash, Kibana)","TheHive","Shuffle SOAR","Elastic Defend","Fleet Server","T-Pot Honeypots","Docker","Linux"],
     Methodologies:["OWASP Top 10","MITRE ATT&CK","Cyber Kill Chain","Reconnaissance","Post-Exploitation","Threat Hunting","Log Analysis","Threat Detection & Response"]
   },
   certs:[
@@ -57,18 +74,16 @@ const CV = {
   ],
   projects:[
     {feat:true, name:"SOClify — SOC-as-a-Service Platform", when:"Graduation Project · 2026", url:"https://soclify.vercel.app", bullets:[
-      "Designed and deployed SOClify, an end-to-end SOC-as-a-Service platform unifying SIEM, SOAR, and EDR into a self-hosted managed security stack with tiered cloud, hybrid, and on-premises deployment models.",
+      "Designed and deployed SOClify, an end-to-end SOC-as-a-Service platform unifying SIEM, SOAR, and EDR into a self-hosted managed security stack with tiered cloud, hybrid, and on-premises models.",
       "Built the SIEM layer on the ELK Stack (Elasticsearch, Logstash, Kibana) with custom detection dashboards, log aggregation, TLS-secured transport, and threat-correlation alerting rules.",
       "Engineered an automated incident-response pipeline with Shuffle SOAR and TheHive 5, chaining Kibana webhook ingestion → automated case creation → real-time Telegram analyst alerts.",
       "Deployed Elastic Defend EDR via Fleet Server for endpoint telemetry, malware prevention, and automated host isolation.",
-      "Validated detection coverage through adversary emulation mapped to MITRE ATT&CK — SSH brute-force @T1110@, compromised credentials @T1078@, and Mythic C2 delivery, HTTPS beaconing, and post-exploitation execution @T1105@ @T1071@ @T1059@ — confirming EDR alerting, host isolation, and automated SOAR case creation fired as designed.",
-      "Operated a T-Pot multi-honeypot platform and a threat-intelligence ingestion pipeline aggregating IOCs from MalwareBazaar, URLhaus, AlienVault OTX, and VirusTotal; hardened production Linux infrastructure with memory/OOM tuning and automated backup & recovery."
+      "Validated detection coverage via adversary emulation mapped to MITRE ATT&CK — SSH brute-force @T1110@, compromised credentials @T1078@, Mythic C2 delivery, HTTPS beaconing, and post-exploitation execution @T1105@ @T1071@ @T1059@ — confirming EDR alerting, host isolation, and automated SOAR case creation fired as designed.",
+      "Operated T-Pot honeypots and a threat-intelligence pipeline (MalwareBazaar, URLhaus, OTX, VirusTotal); hardened Linux infrastructure with OOM tuning and automated backup & recovery."
     ]},
-    {feat:false, name:"TryHackMe — Offensive Security Practice", when:"", url:"https://tryhackme.com/0xlol/", bullets:[
-      "Completed the Jr Penetration Tester and Web Fundamentals learning paths, covering web exploitation, Burp Suite, authentication bypass, file inclusion, SSRF, SQLi, XSS, and command injection.",
-      "Completed the Complete Beginner path, building foundational skills across Linux, networking, scripting, and introductory exploitation techniques.",
-      "Rooted real-world-style machines including Mr. Robot and Steel Mountain, practising enumeration, service exploitation, and privilege escalation end-to-end.",
-      "Completed the OWASP Top 10 room and Advent of Cyber 2026 challenges, reinforcing web security concepts and applied CTF problem-solving skills.",
+    {feat:false, name:"TryHackMe — Offensive Security Practice", when:"", url:"https://tryhackme.com/p/0XLOL", bullets:[
+      "Completed Jr Penetration Tester and Web Fundamentals paths: web exploitation, Burp Suite, authentication bypass, file inclusion, SSRF, SQLi, XSS, and command injection.",
+      "Rooted real-world-style machines (Mr. Robot, Steel Mountain) practising enumeration, service exploitation, and privilege escalation end-to-end.",
       "Earned 14 badges across web hacking, network exploitation, and offensive fundamentals — ranked in the top 5% of the platform globally."
     ]}
   ]
@@ -117,10 +132,10 @@ const R = {
   },
   findings(){
     const items = CV.findings.map(f=>`<div class="finding">
-      <div class="h"><span class="sev ${esc(f.sev)}">${f.sev==='crit'?'critical':'high'}</span><span class="vname">${esc(f.name)}</span></div>
+      <div class="h"><span class="sev ${esc(f.sev)}">${f.sev==='crit'?'critical':'high'}</span><span class="vname">${esc(f.name)}</span>${f.cvss?`<span class="cvss">CVSS ${esc(f.cvss)}</span>`:''}</div>
       <div class="tgt">target › ${esc(f.target)}</div><p>${esc(f.desc)}</p></div>`).join('');
     return `<div class="blk"><h2 class="sec">findings <span class="tag">disclosed</span></h2>${items}
-    <div class="line muted">severity tags reflect vulnerability class, not a published CVSS score.</div></div>`;
+    <div class="line muted">CVSS scores are from the independent black-box assessment; HackerOne items reflect vulnerability class.</div></div>`;
   },
   skills(){
     const rows = Object.entries(CV.skills).map(([k,v])=>`<div class="skillrow">

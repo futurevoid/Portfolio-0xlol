@@ -35,14 +35,17 @@ PROFILE = {
         "phone": "+20 1015548577",
         "location": "Egypt",
         "linkedin": "https://linkedin.com/in/0xlol/",
-        "tryhackme": "https://tryhackme.com/0xlol/",
+        "tryhackme": "https://tryhackme.com/p/0XLOL",
     },
     "summary": (
-        "Motivated and analytical Penetration Tester with hands-on experience in web, API, "
-        "and network security. Skilled in performing end-to-end penetration tests, simulating "
-        "real-world attack scenarios, and delivering actionable remediation aligned with OWASP "
-        "Top 10. Proficient with Burp Suite, Nmap, Metasploit, SQLMap and scripting (Python, "
-        "Bash); eager to apply offensive testing skills to banking and financial sector engagements."
+        "Penetration Tester specialising in web application, API, and network security, with "
+        "disclosed findings on production systems via HackerOne and a black-box assessment "
+        "delivering 10 vulnerabilities across Critical to Medium severity (highest CVSS 9.4). "
+        "Executes end-to-end engagements — reconnaissance, exploitation, privilege escalation, "
+        "and CVSS-scored reporting — aligned with OWASP Top 10 and MITRE ATT&CK; proficient with "
+        "Burp Suite, Nmap, Metasploit, SQLMap, Hydra, Gobuster, and Python/Bash scripting. Also "
+        "designs and operates SOC infrastructure (ELK Stack, Shuffle SOAR, TheHive, Elastic "
+        "Defend EDR) for threat detection, incident response, and adversary emulation."
     ),
     "education": {
         "degree": "Bachelor in Applied Artificial Intelligence",
@@ -54,6 +57,8 @@ PROFILE = {
     "experience": [
         {"title": "Bug Bounty & Vulnerability Researcher", "org": "HackerOne",
          "when": "01/2026 – Present"},
+        {"title": "Vulnerability Assessment — Student Portal & Subdomains",
+         "org": "Independent Security Research (Black-Box)", "when": "May 2026"},
         {"title": "Associate Penetration Tester (Training & Labs)", "org": "Hackviser",
          "when": "08/2025 – 10/2025"},
         {"title": "Cybersecurity Analyst (Virtual Experience)", "org": "Mastercard / Forage",
@@ -62,8 +67,18 @@ PROFILE = {
     "findings": [
         {"sev": "critical", "name": "Account Takeover (ATO)",
          "target": "trendyol.com · HackerOne"},
+        {"sev": "critical", "name": "Session Non-Invalidation — Account Takeover",
+         "target": "Student Portal · Independent VA", "cvss": "9.4"},
         {"sev": "high", "name": "Insecure Direct Object Reference (IDOR)",
          "target": "demeter-api.trendyol.com · HackerOne"},
+        {"sev": "high", "name": "Stored Cross-Site Scripting (XSS)",
+         "target": "Student Portal · Independent VA", "cvss": "8.3"},
+        {"sev": "high", "name": "IDOR — Unauthenticated Profile Image Enumeration",
+         "target": "Student Portal · Independent VA", "cvss": "7.5"},
+        {"sev": "high", "name": "Unauthenticated API Surface Exposure",
+         "target": "Student Portal · Independent VA", "cvss": "7.5"},
+        {"sev": "high", "name": "Absent Server-Side Input Validation",
+         "target": "Student Portal · Independent VA", "cvss": "7.1"},
     ],
     "skills": {
         "Core": ["Penetration Testing", "Web Application Security", "API Security",
@@ -73,7 +88,8 @@ PROFILE = {
                  "Detection Engineering", "Adversary Emulation", "OSINT", "Enumeration",
                  "Python", "Bash / Shell Scripting"],
         "Tools": ["Burp Suite", "Metasploit", "Nmap", "SQLMap", "Hydra", "Gobuster",
-                  "Wireshark", "Mythic C2", "ELK Stack", "TheHive", "Shuffle SOAR",
+                  "Wireshark", "Mythic C2", "ELK Stack (Elasticsearch, Logstash, Kibana)",
+                  "TheHive", "Shuffle SOAR",
                   "Elastic Defend", "Fleet Server", "T-Pot Honeypots", "Docker", "Linux"],
         "Methodologies": ["OWASP Top 10", "MITRE ATT&CK", "Cyber Kill Chain",
                           "Reconnaissance", "Post-Exploitation", "Threat Hunting",
@@ -88,7 +104,7 @@ PROFILE = {
          "when": "Graduation Project · 2026", "url": "https://soclify.vercel.app",
          "attack": ["T1110", "T1078", "T1105", "T1071", "T1059"]},
         {"name": "TryHackMe — Offensive Security Practice",
-         "url": "https://tryhackme.com/0xlol/"},
+         "url": "https://tryhackme.com/p/0XLOL"},
     ],
 }
 
